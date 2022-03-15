@@ -7,6 +7,7 @@ std::istream& operator>>(std::istream& str, CSVRow& data);
 
 int main(int argc, char* argv[])
 {
+    dsgsdgsd
     if(ARGS_NUMBER==3)
     {
         std::ifstream trainSet(argv[2]),
