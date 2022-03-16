@@ -13,7 +13,7 @@ public:
     void readNextRow(std::istream& str);
     std::size_t size() const;
 private:
-    std::string         m_line;
+    std::string            m_line;
     std::vector<double>    m_data;
 };
 

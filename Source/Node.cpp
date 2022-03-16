@@ -1,6 +1,6 @@
 #include <iostream>
 #include <utility>
-#include "Node.h"
+#include "../Headers/Node.h"
 
 Node::Node(std::vector<double> attrs,std::string lastAttr,int size)
     : _attrs(std::move(attrs)), _lastAttr(std::move(lastAttr)),_size(size){};
@@ -25,6 +25,15 @@ void Node::printNode() const
 
 std::size_t Node::getSize() const {
     return this->_size;
+}
+
+std::string Node::getClass() const {
+    return this->_lastAttr;
+}
+
+void Node::setClass(std::string newClass)
+{
+    this->_lastAttr = newClass;
 }
 
 

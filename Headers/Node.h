@@ -11,12 +11,14 @@ public:
     double at(int index) const;
     void printNode() const ;
     std::size_t getSize() const;
+    std::string getClass() const;
+    void setClass(std::string newClass);
 
 public:
-    double distance = 0;
+    double                  distance = 0;
 private:
-    std::vector<double> _attrs;
-    std::string _lastAttr;
-    std::size_t _size;
+    std::vector<double>     _attrs;
+    std::string             _lastAttr;
+    std::size_t             _size;
 
 };
