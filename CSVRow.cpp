@@ -1,8 +1,9 @@
 #include "CSVRow.h"
 
-std::string_view CSVRow::operator[](std::size_t index) const
+std::string CSVRow::operator[](std::size_t index) const
 {
-    return std::string_view(&m_line[m_data[index] + 1], m_data[index + 1] -  (m_data[index] + 1));
+    std::string_view strV(&m_line[m_data[index] + 1], m_data[index + 1] -  (m_data[index] + 1));
+    return {strV.begin(),strV.end()};
 }
 
 void CSVRow::readNextRow(std::istream& str)
