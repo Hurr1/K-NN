@@ -3,7 +3,7 @@
 #include "../Headers/Node.h"
 
 Node::Node(std::vector<double> attrs,std::string lastAttr,int size)
-    : _attrs(std::move(attrs)), _lastAttr(std::move(lastAttr)),_size(size){};
+    : _attrs(std::move(attrs)), _lastAttr(std::move(lastAttr)),_size(size){}
 
 double Node::at(int index) const
 {
@@ -23,11 +23,13 @@ void Node::printNode() const
     std::cout<<"["<<_lastAttr<<']'<<'\n';
 }
 
-std::size_t Node::getSize() const {
+std::size_t Node::getSize() const
+{
     return this->_size;
 }
 
-std::string Node::getClass() const {
+std::string Node::getClass() const
+{
     return this->_lastAttr;
 }
 

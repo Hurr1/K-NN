@@ -17,11 +17,15 @@ int main(int argc, char* argv[])
 
         if(trainSet && testSet)
         {
+            int k = std::atoi((argv[1]));
 
             dataBase = ai::createDB(trainSet);
             testDataBase = ai::createTestDB(testSet);
-
-            ai::knnAlgorithm(dataBase,testDataBase,std::atoi(argv[1]));
+            {
+                k > dataBase.size() ? k = dataBase.size() : k = k;
+                k > 0 ? k = k : k = 3;
+            }
+            ai::knnAlgorithm(dataBase,testDataBase,k);
 
         }else{
             trainSet ? std::cout<<"There no file with name: "<<argv[3]<<'\n' : std::cout<<"There no file with name: " << argv[2]<<'\n';
