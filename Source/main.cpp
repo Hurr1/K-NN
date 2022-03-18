@@ -12,8 +12,8 @@ int main(int argc, char* argv[])
     if(ARGS_NUMBER==3)
     {
 
-        std::ifstream trainSet("resourses/" + static_cast<std::string>(argv[2])),
-                      testSet("resourses/" + static_cast<std::string>(argv[3]));
+        std::ifstream trainSet("Resources/" + static_cast<std::string>(argv[2])),
+                      testSet("Resources/" + static_cast<std::string>(argv[3]));
         std::vector<Node>dataBase;
         std::vector<Node>testDataBase;
 
@@ -33,12 +33,12 @@ int main(int argc, char* argv[])
             sf::RenderWindow rn (sf::VideoMode(960,540),"KNN simulation", sf::Style::Close);
 
             sf::Texture backGround;
-            backGround.loadFromFile("resourses/map.png");
+            backGround.loadFromFile("Resources/map.png");
             sf::Sprite bgSprite(backGround);
             bool axis = true;
 
             sf::Font font;
-            font.loadFromFile("resourses/arial.ttf");
+            font.loadFromFile("Resources/arial.ttf");
 
             sf::Text text;
             text.setFont(font);
