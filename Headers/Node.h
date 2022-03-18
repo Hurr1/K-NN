@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <algorithm>
+#include "SFML/Graphics.hpp"
 
 class Node
 {
@@ -14,8 +15,14 @@ public:
     std::string getClass() const;
     void setClass(std::string newClass);
 
+    double getX() const;
+    double getY() const;
+    double getW() const;
+    double getZ() const;
+
 public:
     double                  distance = 0;
+    sf::Color               color;
 private:
     std::vector<double>     _attrs;
     std::string             _lastAttr;

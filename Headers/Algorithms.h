@@ -22,4 +22,6 @@ namespace ai {
     void knnAlgorithm(std::vector<Node> &dataBase, std::vector<Node> &testDataBase, int k);
 
     void printVec(const std::vector<pair>&vec);
+
+    void setNodesColor(std::vector<Node> &dataBase);
 }
