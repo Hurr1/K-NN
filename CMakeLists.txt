@@ -3,11 +3,13 @@ project(AI)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(AI Source/main.cpp Headers/CSVRow.h Source/CSVRow.cpp Headers/Node.h Source/Node.cpp Source/Algorithms.cpp Headers/Algorithms.h)
+file(GLOB_RECURSE RESOURSES_FILES Resourses/*.png)
+file(GLOB_RECURSE RESOURSES_FILES Resourses/*.cvs)
+file(GLOB_RECURSE RESOURSES_FILES Resourses/*.ttf)
 
-file(GLOB_RECURSE RESOURSES_FILES resourses/*.png)
-file(GLOB_RECURSE RESOURSES_FILES resourses/*.cvs)
-file(GLOB_RECURSE RESOURSES_FILES resourses/*.ttf)
+file(GLOB_RECURSE SRC_FILES Source/*.cpp)
+
+add_executable(AI ${SRC_FILES} ${RESOURSES_FILES} Headers/TextBox.h Headers/Button.h Source/TextBox.cpp)
 
 find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
 include_directories(${SFML_INCLUDE_DIRS})

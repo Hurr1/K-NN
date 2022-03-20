@@ -18,7 +18,6 @@ void CSVRow::readNextRow(std::istream& str)
         m_data.emplace_back(pos);
         ++pos;
     }
-    // This checks for a trailing comma with no data after it.
     pos   = m_line.size();
     m_data.emplace_back(pos);
 }
