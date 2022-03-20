@@ -109,18 +109,23 @@ int main(int argc, char* argv[])
                     header.setString("Z & W");
                     axis = false;
                 }
+                /*
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
                 {
                     input = ai::tokenize(InputBox.getText(), InputBox, " ");
-                    ai::knnAlgorithm(dataBase, input, k);
-                    ai::setNodesColor(dataBase);
+                    if(input.size()>0)
+                    {
+                        ai::knnAlgorithm(dataBase, input, k);
+                        ai::setNodesColor(dataBase);
 
-                    InputBox.textbox.setString(
-                                                dataBase.at(dataBase.size() - 1).getClass() + " " +
-                                                std::to_string((dataBase.at(dataBase.size() - 1).getPercent())) + "%"
-                                                );
-                    input.clear();
+                        InputBox.textbox.setString(
+                                dataBase.at(dataBase.size() - 1).getClass() + " " +
+                                std::to_string((dataBase.at(dataBase.size() - 1).getPercent())) + "%"
+                        );
+                        input.clear();
+                    }
                 }
+                 */
 
                 sf::Event evnt{};
 
@@ -145,7 +150,7 @@ int main(int argc, char* argv[])
                             if (vectorButton.isMouseOver(rn))
                             {
                                 input = ai::tokenize(InputBox.getText(), InputBox, " ");
-                                if(!input.empty())
+                                if(input.size()>0)
                                 {
                                     ai::knnAlgorithm(dataBase, input, k);
                                     ai::setNodesColor(dataBase);

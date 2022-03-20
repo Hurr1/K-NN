@@ -1,9 +1,10 @@
 #pragma once
 
 #include <complex>
+#include "../Headers/Node.h"
 #include "../Headers/Algorithms.h"
 #include "../Headers/CSVRow.h"
-#include "../Headers/TextBox.h"
+
 
 std::istream& operator>>(std::istream& str, CSVRow& data)
 {
@@ -180,6 +181,7 @@ std::vector<Node> ai::tokenize(std::string s,Textbox& input, std::string del = "
             input.textbox.setString("Vector is too big");
             return {};
         }
+        std::cout<<toAdd.size()<<"\n";
         return res;
     }
     catch (std::exception& e)
