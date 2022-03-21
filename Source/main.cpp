@@ -24,14 +24,31 @@ int main(int argc, char* argv[])
 
             dataBase = ai::createDB(trainSet);
             testDataBase = ai::createTestDB(testSet);
+
             {
                 k > dataBase.size() ? k = dataBase.size() : NULL;
                 k > 0 ? NULL : k = 3;
             }
+
+
+            {
+                if (dataBase.empty() || testDataBase.empty()) {
+                    if (dataBase.empty())
+                        std::cout << "TrainingSet.cvs is empty." << '\n';
+                    if (testDataBase.empty())
+                        std::cout << "TestSet.cvs is empty." << '\n';
+
+                    std::cout << "Programs ends with exit code 0" << '\n';
+                    exit(1);
+                }
+                if (dataBase.at(0).getSize() == 1 || dataBase.at(0).getSize() == 0) {
+                    std::cout << "Vector is empty." << '\n' << "Programs ends with exit code 0" << '\n';
+                    exit(1);
+                }
+            }
+
             ai::knnAlgorithm(dataBase,testDataBase,k);
             ai::setNodesColor(dataBase);
-
-
 
             sf::RenderWindow rn (sf::VideoMode(960,540),"KNN simulation", sf::Style::Close);
 
@@ -57,45 +74,23 @@ int main(int argc, char* argv[])
             InputBox.setLimit(true, 16);
             InputBox.setFont(font);
 
-
             Button vectorButton("Enter", {100, 50 }, 20, sf::Color::White, sf::Color::Black);
             vectorButton.setFont(font);
             vectorButton.setPosition({425, 490 });
 
-
-
-
             std::vector<Node> input;
             int axis = 0;
             std::vector<std::pair<std::string,std::pair<int,int>>> axes = ai::getAxes();
+            short lastPage = ai::comb(dataBase.at(0).getSize()-1,2);
             while(rn.isOpen())
             {
 
                 rn.clear();
-                rn.draw(bgSprite);
 
-                ai::drawPoints(rn,header,dataBase,point,axis,axes);
+                rn.draw(bgSprite);
+                ai::drawPoints(rn,header,dataBase,point,axis,axes,lastPage);
                 InputBox.drawTo(rn);
                 vectorButton.drawTo(rn);
-
-
-                /*
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
-                {
-                    input = ai::tokenize(InputBox.getText(), InputBox, " ");
-                    if(input.size()>0)
-                    {
-                        ai::knnAlgorithm(dataBase, input, k);
-                        ai::setNodesColor(dataBase);
-
-                        InputBox.textbox.setString(
-                                dataBase.at(dataBase.size() - 1).getClass() + " " +
-                                std::to_string((dataBase.at(dataBase.size() - 1).getPercent())) + "%"
-                        );
-                        input.clear();
-                    }
-                }
-                 */
 
                 sf::Event evnt{};
 
@@ -132,11 +127,13 @@ int main(int argc, char* argv[])
                                     input.clear();
                                 }
                             }
+                            break;
                         case sf::Event::KeyPressed:
                             if(evnt.key.code == sf::Keyboard::Right)
                                 axis++;
                             else if(evnt.key.code == sf::Keyboard::Left)
                                 axis--;
+                            break;
                     }
                 }
                 rn.display();

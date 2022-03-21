@@ -16,7 +16,7 @@ namespace ai {
 
     std::vector<pair> makeVector(std::vector<Node>& data, int begin , int knn);
 
-    std::vector<Node> tokenize(std::string s, Textbox& input,int size, std::string del);
+    std::vector<Node> tokenize(std::string s, Textbox& input,std::size_t size, std::string del);
 
     void countDistance(Node &first, Node &second);
 
@@ -30,7 +30,7 @@ namespace ai {
 
     std::vector<std::pair<std::string,std::pair<int,int>>> getAxes();
 
-    void drawPoints(sf::RenderWindow& rn,sf::Text header, std::vector<Node>& data, sf::CircleShape& point, int& level, std::vector<std::pair<std::string,std::pair<int,int>>> axes);
+    void drawPoints(sf::RenderWindow& rn,sf::Text header, std::vector<Node>& data, sf::CircleShape& point, int& level, std::vector<std::pair<std::string,std::pair<int,int>>> axes,short lastPage);
 
     int comb(int N, int K);
 

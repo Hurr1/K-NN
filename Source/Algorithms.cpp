@@ -157,7 +157,7 @@ void ai::setNodesColor(std::vector<Node> &dataBase)
 
 }
 
-std::vector<Node> ai::tokenize(std::string s,Textbox& input, int size, std::string del = " ")
+std::vector<Node> ai::tokenize(std::string s,Textbox& input, std::size_t size, std::string del = " ")
 {
 
     size_t start;
@@ -192,13 +192,14 @@ std::vector<Node> ai::tokenize(std::string s,Textbox& input, int size, std::stri
     }
 }
 
-void ai::drawPoints(sf::RenderWindow& rn,sf::Text header, std::vector<Node>& data, sf::CircleShape& point, int& level, std::vector<std::pair<std::string,std::pair<int,int>>> axes)
+void ai::drawPoints(sf::RenderWindow& rn,sf::Text header, std::vector<Node>& data, sf::CircleShape& point, int& level, std::vector<std::pair<std::string,std::pair<int,int>>> axes,short lastPage)
 {
-
-    if(level >= ai::comb(data.at(0).getSize()-1,2))
+    if(level >= lastPage)
         level = 0;
     else if(level < 0)
         level = ai::comb(data.at(0).getSize()-1,2) -1;
+    if(ai::comb(data.at(0).getSize()-1,2) -1 == -1)
+        level = 0;
     for (Node &node: data)
     {
         point.setPosition(
@@ -234,6 +235,30 @@ std::vector<std::pair<std::string,std::pair<int,int>>> ai::getAxes()
     axes.emplace_back("Z & U",std::make_pair(2,5));
     axes.emplace_back("W & U",std::make_pair(3,5));
     axes.emplace_back("V & U",std::make_pair(4,5));
+
+    axes.emplace_back("X & R",std::make_pair(0,6));
+    axes.emplace_back("Y & R",std::make_pair(1,6));
+    axes.emplace_back("Z & R",std::make_pair(2,6));
+    axes.emplace_back("W & R",std::make_pair(3,6));
+    axes.emplace_back("V & R",std::make_pair(4,6));
+    axes.emplace_back("U & R",std::make_pair(5,6));
+
+    axes.emplace_back("X & S",std::make_pair(0,7));
+    axes.emplace_back("Y & S",std::make_pair(1,7));
+    axes.emplace_back("Z & S",std::make_pair(2,7));
+    axes.emplace_back("W & S",std::make_pair(3,7));
+    axes.emplace_back("V & S",std::make_pair(4,7));
+    axes.emplace_back("U & S",std::make_pair(5,7));
+    axes.emplace_back("R & S",std::make_pair(6,7));
+
+    axes.emplace_back("X & T",std::make_pair(0,8));
+    axes.emplace_back("Y & T",std::make_pair(1,8));
+    axes.emplace_back("Z & T",std::make_pair(2,8));
+    axes.emplace_back("W & T",std::make_pair(3,8));
+    axes.emplace_back("V & T",std::make_pair(4,8));
+    axes.emplace_back("U & T",std::make_pair(5,8));
+    axes.emplace_back("R & T",std::make_pair(6,8));
+    axes.emplace_back("S & T",std::make_pair(7,8));
 
     return axes;
 }
