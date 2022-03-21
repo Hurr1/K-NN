@@ -34,25 +34,6 @@ void Node::setClass(std::string newClass)
     this->_lastAttr = newClass;
 }
 
-double Node::getY() const
-{
-    return _attrs.at(1);
-}
-
-double Node::getX() const
-{
-    return _attrs.at(0);
-}
-
-double Node::getZ() const
-{
-    return _attrs.at(2);
-}
-double Node::getW() const
-{
-    return _attrs.at(3);
-}
-
 sf::Color Node::getColor() const
 {
     return _color;
@@ -68,7 +49,7 @@ void Node::setPercent(int value)
     this->_percent = value;
 }
 
-int Node::getPercent() const
+short Node::getPercent() const
 {
     return this->_percent;
 }

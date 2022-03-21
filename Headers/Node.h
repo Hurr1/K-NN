@@ -17,13 +17,9 @@ public:
     void setPercent(int value);
     sf::Color getColor() const;
 
-    double getX() const;
-    double getY() const;
-    double getW() const;
-    double getZ() const;
     std::size_t getSize() const;
     std::string getClass() const;
-    int getPercent() const;
+    short getPercent() const;
 
 
 public:
