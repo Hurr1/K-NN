@@ -12,7 +12,5 @@ file(GLOB_RECURSE SRC_FILES Source/*.cpp)
 add_executable(AI ${SRC_FILES} ${RESOURSES_FILES} Headers/TextBox.h Headers/Button.h Source/TextBox.cpp)
 
 find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
-find_package(TGUI REQUIRED)
 include_directories(${SFML_INCLUDE_DIRS})
 target_link_libraries(AI sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
-target_link_libraries(AI ${TGUI_LIBRARY})
