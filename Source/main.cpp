@@ -5,15 +5,14 @@
 #include "../Headers/Algorithms.h"
 #include "../Headers/Button.h"
 #include <SFML/Graphics.hpp>
-
 #define ARGS_NUMBER argc-1
 
 
 int main(int argc, char* argv[])
 {
+
     if(ARGS_NUMBER==3)
     {
-
         std::ifstream trainSet("Resources/" + static_cast<std::string>(argv[2])),
                       testSet("Resources/" + static_cast<std::string>(argv[3]));
         std::vector<Node>dataBase;
@@ -63,52 +62,23 @@ int main(int argc, char* argv[])
             vectorButton.setFont(font);
             vectorButton.setPosition({425, 490 });
 
+
+
+
             std::vector<Node> input;
-            bool axis = true;
+            int axis = 0;
+            std::vector<std::pair<std::string,std::pair<int,int>>> axes = ai::getAxes();
             while(rn.isOpen())
             {
 
                 rn.clear();
                 rn.draw(bgSprite);
-                rn.draw(header);
 
-
-                if(axis)
-                {
-                    for (Node &node: dataBase)
-                    {
-                        point.setPosition(
-                                            {static_cast<float>((node.getX())*100), static_cast<float>((node.getY()) * 100)}
-                                         );
-                        point.setFillColor(node.getColor());
-                        rn.draw(point);
-                    }
-                }
-                else
-                {
-                    for (Node &node: dataBase)
-                    {
-                        point.setPosition(
-                                            {static_cast<float>((node.getZ())*100), static_cast<float>((node.getW())*100 )}
-                                          );
-                        point.setFillColor(node.getColor());
-                        rn.draw(point);
-                    }
-                }
+                ai::drawPoints(rn,header,dataBase,point,axis,axes);
                 InputBox.drawTo(rn);
                 vectorButton.drawTo(rn);
 
 
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
-                {
-                    header.setString("X & Y");
-                    axis = true;
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
-                {
-                    header.setString("Z & W");
-                    axis = false;
-                }
                 /*
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
                 {
@@ -149,8 +119,8 @@ int main(int argc, char* argv[])
                         case sf::Event::MouseButtonPressed:
                             if (vectorButton.isMouseOver(rn))
                             {
-                                input = ai::tokenize(InputBox.getText(), InputBox, " ");
-                                if(input.size()>0)
+                                input = ai::tokenize(InputBox.getText(), InputBox, dataBase.at(0).getSize()," ");
+                                if(!input.empty())
                                 {
                                     ai::knnAlgorithm(dataBase, input, k);
                                     ai::setNodesColor(dataBase);
@@ -162,6 +132,11 @@ int main(int argc, char* argv[])
                                     input.clear();
                                 }
                             }
+                        case sf::Event::KeyPressed:
+                            if(evnt.key.code == sf::Keyboard::Right)
+                                axis++;
+                            else if(evnt.key.code == sf::Keyboard::Left)
+                                axis--;
                     }
                 }
                 rn.display();

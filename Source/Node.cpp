@@ -8,12 +8,7 @@ Node::Node(std::vector<double> attrs,std::string lastAttr,int size)
 
 double Node::at(int index) const
 {
-    if(index >= this->_size)
-    {
-        std::cout<<"Error incorrect index"<<'\n';
-        system(EXIT_SUCCESS);
-    }
-    return this->_attrs.at(index);
+    return this->_attrs[index];
 }
 
 

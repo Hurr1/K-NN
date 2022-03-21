@@ -12,7 +12,6 @@ std::istream& operator>>(std::istream& str, CSVRow& data)
     return str;
 }
 
-
 std::vector<Node> ai::createDB(std::istream& str)
 {
     CSVRow row;
@@ -33,6 +32,7 @@ std::vector<Node> ai::createTestDB(std::ifstream& str)
         CSVRow row;
         std::vector<Node> data;
         std::vector<double>toAdd;
+
         while(str >> row)
         {
             for(int i = 0; i< row.size()-1;i++)
@@ -103,8 +103,8 @@ void ai::knnAlgorithm(std::vector<Node>& dataBase, std::vector<Node> testDataBas
             countDistance(test_n, data_n);
         std::vector<Node> copy(dataBase);
         std::sort(copy.begin(),
-                   copy.end(),
-                   [](const auto& _1, const auto& _2) { return _1.distance < _2.distance; });
+                  copy.end(),
+                  [](const auto& _1, const auto& _2) { return _1.distance < _2.distance; });
 
         ai::findClass(dataBase, test_n, k, copy);
     }
@@ -157,7 +157,7 @@ void ai::setNodesColor(std::vector<Node> &dataBase)
 
 }
 
-std::vector<Node> ai::tokenize(std::string s,Textbox& input, std::string del = " ")
+std::vector<Node> ai::tokenize(std::string s,Textbox& input, int size, std::string del = " ")
 {
 
     size_t start;
@@ -165,23 +165,24 @@ std::vector<Node> ai::tokenize(std::string s,Textbox& input, std::string del = "
     std::vector<double> toAdd;
 
     try {
-        while ((start = s.find_first_not_of(del, end)) != std::string::npos) {
+        while ((start = s.find_first_not_of(del, end)) != std::string::npos)
+        {
             end = s.find(del, start);
             toAdd.push_back(std::stod(s.substr(start, end - start)));
+
         }
         std::vector<Node> res;
-        res.emplace_back(Node(toAdd, "UNDERFINED", 5));
-        if(toAdd.size()<4)
+        res.emplace_back(Node(toAdd, "UNDERFINED", size));
+        if(toAdd.size()<size-1)
         {
             input.textbox.setString("Vector is too small");
             return {};
         }
-        else if(toAdd.size()>4)
+        else if(toAdd.size()>size-1)
         {
             input.textbox.setString("Vector is too big");
             return {};
         }
-        std::cout<<toAdd.size()<<"\n";
         return res;
     }
     catch (std::exception& e)
@@ -189,4 +190,63 @@ std::vector<Node> ai::tokenize(std::string s,Textbox& input, std::string del = "
         input.textbox.setString("Not a vector");
         return std::vector<Node>();
     }
+}
+
+void ai::drawPoints(sf::RenderWindow& rn,sf::Text header, std::vector<Node>& data, sf::CircleShape& point, int& level, std::vector<std::pair<std::string,std::pair<int,int>>> axes)
+{
+
+    if(level >= ai::comb(data.at(0).getSize()-1,2))
+        level = 0;
+    else if(level < 0)
+        level = ai::comb(data.at(0).getSize()-1,2) -1;
+    for (Node &node: data)
+    {
+        point.setPosition(
+                {static_cast<float>((node.at(axes.at(level).second.first))*100), static_cast<float>((node.at(axes.at(level).second.second)) * 100 )}
+        );
+        point.setFillColor(node.getColor());
+        rn.draw(point);
+
+    }
+    header.setString(axes.at(level).first);
+    rn.draw(header);
+}
+
+std::vector<std::pair<std::string,std::pair<int,int>>> ai::getAxes()
+{
+    std::vector<std::pair<std::string,std::pair<int,int>>>axes;
+    axes.emplace_back("X & Y",std::make_pair(0,1));
+
+    axes.emplace_back("X & Z",std::make_pair(0,2));
+    axes.emplace_back("Y & Z",std::make_pair(1,2));
+
+    axes.emplace_back("X & W",std::make_pair(0,3));
+    axes.emplace_back("Y & W",std::make_pair(1,3));
+    axes.emplace_back("Z & W",std::make_pair(2,3));
+
+    axes.emplace_back("X & V",std::make_pair(0,4));
+    axes.emplace_back("Y & V",std::make_pair(1,4));
+    axes.emplace_back("Z & V",std::make_pair(2,4));
+    axes.emplace_back("W & V",std::make_pair(3,4));
+
+    axes.emplace_back("X & U",std::make_pair(0,5));
+    axes.emplace_back("Y & U",std::make_pair(1,5));
+    axes.emplace_back("Z & U",std::make_pair(2,5));
+    axes.emplace_back("W & U",std::make_pair(3,5));
+    axes.emplace_back("V & U",std::make_pair(4,5));
+
+    return axes;
+}
+
+int ai::factorial(int n)
+{
+    int res = 1;
+    for (int i = 2; i <= n; i++)
+        res = res * i;
+    return res;
+}
+
+int ai::comb(int N, int K)
+{
+    return ai::factorial(N) / (ai::factorial(K) * ai::factorial(N - K));
 }
