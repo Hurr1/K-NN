@@ -70,6 +70,18 @@
 			"value" : "/usr/bin/ar"
 		},
 		{
+			"name" : "CMAKE_BACKWARDS_COMPATIBILITY",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "For backwards compatibility, what version of CMake commands and syntax should this version of CMake try to support."
+				}
+			],
+			"type" : "STRING",
+			"value" : "2.4"
+		},
+		{
 			"name" : "CMAKE_BUILD_TYPE",
 			"properties" : 
 			[
@@ -1138,6 +1150,66 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "EXECUTABLE_OUTPUT_PATH",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Single output directory for building all executables."
+				}
+			],
+			"type" : "PATH",
+			"value" : ""
+		},
+		{
+			"name" : "LIBRARY_OUTPUT_PATH",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Single output directory for building all libraries."
+				}
+			],
+			"type" : "PATH",
+			"value" : ""
+		},
+		{
+			"name" : "Project_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/hurr1cane/Desktop/NAI/AI/cmake-build-debug"
+		},
+		{
+			"name" : "Project_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Project_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/hurr1cane/Desktop/NAI/AI"
+		},
+		{
 			"name" : "SFML_DIR",
 			"properties" : 
 			[
@@ -1160,6 +1232,18 @@
 			],
 			"type" : "PATH",
 			"value" : "SFML_DOC_DIR-NOTFOUND"
+		},
+		{
+			"name" : "TGUI_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for TGUI."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/usr/lib/x86_64-linux-gnu/cmake/TGUI"
 		}
 	],
 	"kind" : "cache",

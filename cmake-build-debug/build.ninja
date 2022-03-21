@@ -72,8 +72,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build cmake_object_order_depends_target_AI: phony || CMakeFiles/AI.dir
 
-build CMakeFiles/AI.dir/Source/main.cpp.o: CXX_COMPILER__AI_Debug /home/hurr1cane/Desktop/NAI/AI/Source/main.cpp || cmake_object_order_depends_target_AI
-  DEP_FILE = CMakeFiles/AI.dir/Source/main.cpp.o.d
+build CMakeFiles/AI.dir/Source/Algorithms.cpp.o: CXX_COMPILER__AI_Debug /home/hurr1cane/Desktop/NAI/AI/Source/Algorithms.cpp || cmake_object_order_depends_target_AI
+  DEP_FILE = CMakeFiles/AI.dir/Source/Algorithms.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/AI.dir
   OBJECT_FILE_DIR = CMakeFiles/AI.dir/Source
@@ -90,8 +90,14 @@ build CMakeFiles/AI.dir/Source/Node.cpp.o: CXX_COMPILER__AI_Debug /home/hurr1can
   OBJECT_DIR = CMakeFiles/AI.dir
   OBJECT_FILE_DIR = CMakeFiles/AI.dir/Source
 
-build CMakeFiles/AI.dir/Source/Algorithms.cpp.o: CXX_COMPILER__AI_Debug /home/hurr1cane/Desktop/NAI/AI/Source/Algorithms.cpp || cmake_object_order_depends_target_AI
-  DEP_FILE = CMakeFiles/AI.dir/Source/Algorithms.cpp.o.d
+build CMakeFiles/AI.dir/Source/TextBox.cpp.o: CXX_COMPILER__AI_Debug /home/hurr1cane/Desktop/NAI/AI/Source/TextBox.cpp || cmake_object_order_depends_target_AI
+  DEP_FILE = CMakeFiles/AI.dir/Source/TextBox.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/AI.dir
+  OBJECT_FILE_DIR = CMakeFiles/AI.dir/Source
+
+build CMakeFiles/AI.dir/Source/main.cpp.o: CXX_COMPILER__AI_Debug /home/hurr1cane/Desktop/NAI/AI/Source/main.cpp || cmake_object_order_depends_target_AI
+  DEP_FILE = CMakeFiles/AI.dir/Source/main.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/AI.dir
   OBJECT_FILE_DIR = CMakeFiles/AI.dir/Source
@@ -104,7 +110,7 @@ build CMakeFiles/AI.dir/Source/Algorithms.cpp.o: CXX_COMPILER__AI_Debug /home/hu
 #############################################
 # Link the executable AI
 
-build AI: CXX_EXECUTABLE_LINKER__AI_Debug CMakeFiles/AI.dir/Source/main.cpp.o CMakeFiles/AI.dir/Source/CSVRow.cpp.o CMakeFiles/AI.dir/Source/Node.cpp.o CMakeFiles/AI.dir/Source/Algorithms.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-network.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
+build AI: CXX_EXECUTABLE_LINKER__AI_Debug CMakeFiles/AI.dir/Source/Algorithms.cpp.o CMakeFiles/AI.dir/Source/CSVRow.cpp.o CMakeFiles/AI.dir/Source/Node.cpp.o CMakeFiles/AI.dir/Source/TextBox.cpp.o CMakeFiles/AI.dir/Source/main.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-network.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
   FLAGS = -g
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1  /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1  /usr/lib/x86_64-linux-gnu/libsfml-network.so.2.5.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
   OBJECT_DIR = CMakeFiles/AI.dir
