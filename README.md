@@ -1,6 +1,6 @@
 # The k-nearest neighbors (KNN) algorithm
 
-A simple k-nn algorithm with 4 numeric and 1
+A simple k-nn algorithm with N numeric and 1
 decision parameter
 
 ## Program arguments
