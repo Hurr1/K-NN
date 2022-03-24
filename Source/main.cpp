@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
                     std::cout << "Programs ends with exit code 0" << '\n';
                     exit(1);
                 }
-                if (dataBase.at(0).getSize() == 1 || dataBase.at(0).getSize() == 0) {
+                if (dataBase.at(0).getSize() == 0 || dataBase.at(0).getSize() == 0) {
                     std::cout << "Vector is empty." << '\n' << "Programs ends with exit code 0" << '\n';
                     exit(1);
                 }
